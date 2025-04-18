@@ -1,6 +1,22 @@
 from flask import Flask, request
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
+
+# Add a route to handle Dapr configuration
+@app.route('/dapr/config', methods=['GET'])
+def config():
+    logging.debug("/dapr/config endpoint was accessed.")
+    return {
+        "pubsub": [{
+            "pubsubname": "pubsub",
+            "topic": "orders",
+            "route": "orders"
+        }]
+    }
 
 # Inform Dapr about the pub/sub subscription
 @app.route('/dapr/subscribe', methods=['GET'])

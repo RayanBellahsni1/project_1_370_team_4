@@ -4,7 +4,7 @@ from dapr.clients import DaprClient
 # Hardcoded order details
 order = {
     'item_name': 'Laptop',
-    'item_price': 999.99
+    'item_price': 899.99
 }
 
 print("Welcome to StoreService! Publishing a hardcoded order...")
